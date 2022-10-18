@@ -52,8 +52,16 @@ const Home: NextPage = () => {
       <Input label="Test Name" required type="text" placeholder="Josh" />
     </section>
   );
-  
+
+  const PaymentFields = () => (
+    <section>
+      <h1>Personal Information</h1>
+      <Input label="Test Name" required type="text" placeholder="Josh" />
+    </section>
+  );
+
   const Navigation = () => (
+  
     <section>
       {step === fieldGroups.length-1 && 
         <button type="submit" disabled={!isValid}>Save</button>
@@ -61,7 +69,7 @@ const Home: NextPage = () => {
       {step < fieldGroups.length-1 && 
         <button type="button" onClick={() => { setStep(step+1) }} disabled={!isValid}>Next</button>
       }
-      {step > fieldGroups.length-1 && 
+      {step > 0 && 
         <button type="button" onClick={() => { setStep(step-1) }} disabled={!isValid}>Back</button> 
       }
     </section>
@@ -71,6 +79,7 @@ const Home: NextPage = () => {
   const fieldGroups = [
     <PersonFields />,
     <ContactFields />,
+    <PaymentFields />,
   ];
   
   return (
